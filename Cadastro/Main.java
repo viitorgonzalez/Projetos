@@ -1,4 +1,4 @@
-// IMPORTS
+// iImportações de bibliotecas necessárias
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,29 +7,37 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 
-// CLASSE MAIN
+// classe principal
 public class Main {
 
+    // Cria um objeto Scanner para ler as entradas do usuário
     private static Scanner scanner = new Scanner(System.in);
+     // Cria uma lista para armazenar os objetos da classe Pessoa
     private static ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+    // Variável que armazena o contador de identificação (id) das pessoas cadastradas
     private static int idCounter = 0;
     
 
     public static void main(String[] args) {
 
-        // Ler o valor do idCounter do arquivo
+        // Tenta ler o valor do idCounter do arquivo idCounter.txt
         try {
+            // Cria um objeto File com o nome do arquivo
             File file = new File("idCounter.txt");
+
+            // Se o arquivo existir, o valor é lido e armazenado na variável idCounter
             if (file.exists()) {
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 idCounter = Integer.parseInt(br.readLine());
                 br.close();
             }
         } catch (Exception e) {
+            // Caso haja algum erro ao ler o arquivo, exibe uma mensagem de erro
             System.out.println("Erro ao ler o arquivo idCounter.txt");
             e.printStackTrace();
         }
 
+        // Loop infinito que exibe as opções para o usuário e realiza as ações de acordo com a opção escolhida
         while(true){
     
             System.out.println("Escolha uma opção:");
@@ -40,8 +48,9 @@ public class Main {
             System.out.print("Opção: ");
     
             int opc = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); //limpar buffer do teclado
 
+            // Switch case para verificar a opção escolhida pelo usuário
             switch (opc) {
                 case 1:
                     cadastrarPessoa();
@@ -65,6 +74,7 @@ public class Main {
                         System.out.println("Erro ao escrever o arquivo idCounter.txt");
                         e.printStackTrace();
                     }
+                    //Sai da aplicação
                     System.out.println("Saindo...");
                     return;
 
@@ -77,12 +87,14 @@ public class Main {
 
     private static void cadastrarPessoa() {
 
+        // Lê os dados da pessoa a ser cadastrada
         System.out.println("Digite o nome:");
         String nome = scanner.nextLine();
         System.out.println("Digite sua idade:");
         int idade = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); //limpar buffer do teclado
 
+        // Cria uma nova pessoa e adiciona à lista de pessoas cadastradas
         Pessoa pessoa = new Pessoa(++idCounter, nome, idade);
         listaPessoas.add(pessoa);
 
@@ -93,8 +105,9 @@ public class Main {
 
         System.out.println("Digite o id do cadastro que deseja excluir:");
         int idRemove = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); //limpar buffer do teclado
 
+        //Pesquisa o id digitado e exclui o cadastro caso seja um id válido pra exclusão
         for(Pessoa pessoa : listaPessoas) {
             if(pessoa.getId() == idRemove) {
                 listaPessoas.remove(pessoa);
@@ -109,6 +122,7 @@ public class Main {
 
         System.out.println("Lista de cadastros:");
 
+        //mostra os cadastros existentes
         for (int i = 0; i < listaPessoas.size(); i++) {
             Pessoa pessoa = listaPessoas.get(i);
             System.out.println("ID: " + pessoa.getId());
