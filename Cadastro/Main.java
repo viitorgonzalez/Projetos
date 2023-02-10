@@ -118,7 +118,7 @@ public class Main {
         System.out.println("Não foi encontrado nenhum cadastro com o id informado!");
     }
 
-    private static void mostrarCadastros() {
+    private static void mostrarCadastros() { //fazer alteração para que escreva os cadastros em um arquivo Cadastro.txt
 
         System.out.println("Lista de cadastros:");
 
