@@ -38,7 +38,7 @@ public class Main {
         }
 
         // Loop infinito que exibe as opções para o usuário e realiza as ações de acordo com a opção escolhida
-        while(true){
+        while(true) {
     
             System.out.println("Escolha uma opção:");
             System.out.println("1- Cadastrar uma pessoa");
@@ -117,7 +117,7 @@ public class Main {
         System.out.println("Não foi encontrado nenhum cadastro com o id informado!");
     }
 
-    private static void mostrarCadastros() { //fazer alteração para que escreva os cadastros em um arquivo Cadastro.txt
+    private static void mostrarCadastros() { 
 
         System.out.println("Lista de cadastros:");
 
@@ -130,4 +130,8 @@ public class Main {
             System.out.println("-----------------------------------------------------");
         }
     }
+
+    //fazer alteração para que escreva os cadastros em um arquivo Cadastro.txt
+
+
 }
