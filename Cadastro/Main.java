@@ -1,7 +1,14 @@
+/*
+ * Created by: Vítor Silva Pastor Gonzalez
+ * 2023
+ */
+
 // iImportações de bibliotecas necessárias
 import java.util.Scanner;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -131,7 +138,19 @@ public class Main {
         }
     }
 
-    //fazer alteração para que escreva os cadastros em um arquivo Cadastro.txt
+
+    /*to do:
+     * Utilizar o arquivo Cadastros.txt para armazenar os cadastros
+     * Criar um método para que possa excluir cadastros do arquivo Cadastros.txt
+     * Alterar o método mostrarCadastros() para que mostre todos os cadastros do arquivo Cadastros.txt
+     * 
+     * 
+     * escrever o objeto no arquivo Cadastros.txt e criar um método
+     * para que leia todo o arquivo e em seguida pesquise o id selecionado 
+     * para excluir, em seguida o excluindo.
+     * mostrarCadastros() deve ler o arquivo Cadastro.txt e em seguida pegar os valores armazenados
+     * e mostra-los 
+     */
 
 
 }
