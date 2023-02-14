@@ -4,21 +4,20 @@
  */
 
 // iImportações de bibliotecas necessárias
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Scanner;
 
 // classe principal
 public class Main {
 
     // Cria um objeto Scanner para ler as entradas do usuário
     private static Scanner scanner = new Scanner(System.in);
-     // Cria uma lista para armazenar os objetos da classe Pessoa
-    private static ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+     // Cria um HashMap para armazenar os objetos da classe Pessoa
+    private static HashMap<Integer, Pessoa> pessoas = new HashMap<Integer, Pessoa>();
     // Variável que armazena o contador de identificação (id) das pessoas cadastradas
     private static int idCounter = 0;
     
@@ -100,7 +99,20 @@ public class Main {
 
         // Cria uma nova pessoa e adiciona à lista de pessoas cadastradas
         Pessoa pessoa = new Pessoa(++idCounter, nome, idade);
-        listaPessoas.add(pessoa);
+        pessoas.put(idCounter, pessoa);
+
+        //cadastrar no arquivo .csv
+        try {
+            File cadastros = new File("Cadastros.csv");
+            FileWriter fwc = new FileWriter(cadastros, true);
+            
+            fwc.write(pessoa.toString());
+
+            fwc.close();
+        } catch (Exception e) {
+            System.out.println("Erro!");
+            e.printStackTrace();
+        }
 
         System.out.println("Cadastro concluído!");
     }
@@ -111,44 +123,57 @@ public class Main {
         int idRemove = scanner.nextInt();
         scanner.nextLine(); //limpar buffer do teclado
 
-        //Pesquisa o id digitado e exclui o cadastro caso seja um id válido pra exclusão
-        for(Pessoa pessoa : listaPessoas) {
-            if(pessoa.getId() == idRemove) {
-                listaPessoas.remove(pessoa);
-                System.out.println("Cadastro excluído com êxito!");
-                return;
+        // Lê todos os cadastros do arquivo CSV e adiciona a lista de pessoas cadastradas
+        try {
+            File cadastros = new File("Cadastros.csv");
+            BufferedReader brc = new BufferedReader(new FileReader(cadastros));
+            
+            String linha;
+            while ((linha = brc.readLine()) != null) {
+                // Divide a linha em um array de strings, usando a vírgula como delimitador
+                String[] dados = linha.split(",");
+                //cria um objeto de Pessoa com os dados lidos do arquivo
+                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], Integer.parseInt(dados[2]));
+                pessoas.put(pessoa.getId(), pessoa);
             }
+
+            brc.close();
+        } catch (Exception e) {
+            System.out.println("Erro ao ler o arquivo Cadastros.csv");
+            e.printStackTrace();
         }
-        System.out.println("Não foi encontrado nenhum cadastro com o id informado!");
-    }
+
+        // Pesquisa o id digitado e exclui o cadastro caso seja um id válido pra exclusão
+        if(pessoas.containsKey(idRemove)) {
+            pessoas.remove(idRemove);
+            System.out.println("Cadastro excluído com êxito!");
+
+            // Sobrescreve o arquivo CSV com a lista atualizada de cadastros
+            try {
+                File cadastros = new File("Cadastros.csv");
+                FileWriter fwc = new FileWriter(cadastros);
+                
+                for(Pessoa pessoa : pessoas.values()) {
+                    fwc.write(pessoa.toString());
+                }
+
+                fwc.close();
+            } catch (Exception e) {
+                System.out.println("Erro ao escrever o arquivo Cadastros.csv");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Não foi encontrado nenhum cadastro com o id informado!");
+        }
+}
 
     private static void mostrarCadastros() { 
 
         System.out.println("Lista de cadastros:");
 
         //mostra os cadastros existentes em formato para arquivo .csv
-        for (int i = 0; i < listaPessoas.size(); i++) {
-            Pessoa pessoa = listaPessoas.get(i);
-            System.out.print(pessoa.getId());
-            System.out.print(", " + pessoa.getNome());
-            System.out.print(", " + pessoa.getIdade());
-            System.out.println();
-        }
+        for(Pessoa res : pessoas.values()) {
+            System.out.println(res);
+        } 
     }
-
-
-    /*to do:
-     * Utilizar o arquivo Cadastros.txt para armazenar os cadastros
-     * Criar um método para que possa excluir cadastros do arquivo Cadastros.txt
-     * Alterar o método mostrarCadastros() para que mostre todos os cadastros do arquivo Cadastros.txt
-     * 
-     * 
-     * escrever o objeto no arquivo Cadastros.txt e criar um método
-     * para que leia todo o arquivo e em seguida pesquise o id selecionado 
-     * para excluir, em seguida o excluindo.
-     * mostrarCadastros() deve ler o arquivo Cadastro.txt e em seguida pegar os valores armazenados
-     * e mostra-los 
-     */
-
-
 }

@@ -3,6 +3,8 @@
  * Last update: 14/02/2023
  */
 
+package Projetos.JogoDaVelha;
+
 import java.util.Scanner;
 
 public class Main {
