@@ -1,3 +1,8 @@
+/*
+ * Created by: Vítor Silva Pastor Gonzalez
+ * 2023
+ */
+
 // iImportações de bibliotecas necessárias
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -38,7 +43,7 @@ public class Main {
         }
 
         // Loop infinito que exibe as opções para o usuário e realiza as ações de acordo com a opção escolhida
-        while(true){
+        while(true) {
     
             System.out.println("Escolha uma opção:");
             System.out.println("1- Cadastrar uma pessoa");
@@ -81,7 +86,6 @@ public class Main {
                 default:
                     System.out.println("Opção inválida!");
             }
-    
         }
     }
 
@@ -118,17 +122,33 @@ public class Main {
         System.out.println("Não foi encontrado nenhum cadastro com o id informado!");
     }
 
-    private static void mostrarCadastros() {
+    private static void mostrarCadastros() { 
 
         System.out.println("Lista de cadastros:");
 
-        //mostra os cadastros existentes
+        //mostra os cadastros existentes em formato para arquivo .csv
         for (int i = 0; i < listaPessoas.size(); i++) {
             Pessoa pessoa = listaPessoas.get(i);
-            System.out.println("ID: " + pessoa.getId());
-            System.out.println("Nome: " + pessoa.getNome());
-            System.out.println("Idade: " + pessoa.getIdade());
-            System.out.println("-----------------------------------------------------");
+            System.out.print(pessoa.getId());
+            System.out.print(", " + pessoa.getNome());
+            System.out.print(", " + pessoa.getIdade());
+            System.out.println();
         }
     }
+
+
+    /*to do:
+     * Utilizar o arquivo Cadastros.txt para armazenar os cadastros
+     * Criar um método para que possa excluir cadastros do arquivo Cadastros.txt
+     * Alterar o método mostrarCadastros() para que mostre todos os cadastros do arquivo Cadastros.txt
+     * 
+     * 
+     * escrever o objeto no arquivo Cadastros.txt e criar um método
+     * para que leia todo o arquivo e em seguida pesquise o id selecionado 
+     * para excluir, em seguida o excluindo.
+     * mostrarCadastros() deve ler o arquivo Cadastro.txt e em seguida pegar os valores armazenados
+     * e mostra-los 
+     */
+
+
 }

@@ -1,3 +1,8 @@
+/*
+ * Created by: Vítor Silva Pastor Gonzalez
+ * 2023
+ */
+
 public class Pessoa {
     private final int id;
     private String nome;
@@ -23,20 +28,21 @@ public class Pessoa {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public int getIdade() {
         return idade;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setIdade(int idade) {
         this.idade = idade;
     }
 
+    //usado para mostrar todo o conteúdo do arraylist
     @Override
     public String toString() {
-        return "Pessoa [id=" + id + ", nome=" + nome + ", idade=" + idade + "]";
+        return id + ", " + nome + ", " + idade;
     }
 }
