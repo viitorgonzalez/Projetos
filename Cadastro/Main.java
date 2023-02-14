@@ -165,7 +165,7 @@ public class Main {
         } else {
             System.out.println("Não foi encontrado nenhum cadastro com o id informado!");
         }
-}
+    }
 
     private static void mostrarCadastros() { 
 
