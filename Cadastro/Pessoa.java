@@ -35,8 +35,9 @@ public class Pessoa {
         this.idade = idade;
     }
 
+    //usado para mostrar todo o conteúdo do arraylist
     @Override
     public String toString() {
-        return "Pessoa [id=" + id + ", nome=" + nome + ", idade=" + idade + "]";
+        return id + ", " + nome + ", " + idade;
     }
 }

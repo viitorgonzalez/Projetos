@@ -127,13 +127,13 @@ public class Main {
 
         System.out.println("Lista de cadastros:");
 
-        //mostra os cadastros existentes
+        //mostra os cadastros existentes em formato para arquivo .csv
         for (int i = 0; i < listaPessoas.size(); i++) {
             Pessoa pessoa = listaPessoas.get(i);
-            System.out.println("ID: " + pessoa.getId());
-            System.out.println("Nome: " + pessoa.getNome());
-            System.out.println("Idade: " + pessoa.getIdade());
-            System.out.println("-----------------------------------------------------");
+            System.out.print(pessoa.getId());
+            System.out.print(", " + pessoa.getNome());
+            System.out.print(", " + pessoa.getIdade());
+            System.out.println();
         }
     }
 
