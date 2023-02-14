@@ -43,6 +43,6 @@ public class Pessoa {
     //usado para mostrar todo o conteúdo do arraylist
     @Override
     public String toString() {
-        return id + ", " + nome + ", " + idade;
+        return id + ", " + nome + ", " + idade + "\n";
     }
 }
