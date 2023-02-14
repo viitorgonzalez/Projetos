@@ -1,3 +1,8 @@
+/*
+ * Created by: Vítor Silva Pastor Gonzalez
+ * Last update: 14/02/2023
+ */
+
 public class Campo {
 
      private char simbolo;

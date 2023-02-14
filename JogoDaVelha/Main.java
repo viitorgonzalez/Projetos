@@ -1,3 +1,8 @@
+/*
+ * Created by: Vítor Silva Pastor Gonzalez
+ * Last update: 14/02/2023
+ */
+
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +45,7 @@ public class Main {
 
     public static void desenhaJogo(Campo[][] velha) {
 
+        //printa 200 linhas vazias simulando um clear
         limparTela();
         System.out.println("   0    1    2");
         System.out.printf("0   %c | %c | %c \n", velha[0][0].getSimbolo(), velha[0][1].getSimbolo(), velha[0][2].getSimbolo());
