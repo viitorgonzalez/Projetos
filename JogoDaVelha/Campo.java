@@ -3,6 +3,8 @@
  * Last update: 14/02/2023
  */
 
+package Projetos.JogoDaVelha;
+
 public class Campo {
 
      private char simbolo;
