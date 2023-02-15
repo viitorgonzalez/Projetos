@@ -1,7 +1,9 @@
+
+
 /*
- * Created by: Vítor Silva Pastor Gonzalez
- * 2023
- */
+* Created by: Vítor Silva Pastor Gonzalez
+* 2023
+*/
 
 // iImportações de bibliotecas necessárias
 import java.io.BufferedReader;
@@ -20,14 +22,13 @@ public class Main {
     private static HashMap<Integer, Pessoa> pessoas = new HashMap<Integer, Pessoa>();
     // Variável que armazena o contador de identificação (id) das pessoas cadastradas
     private static int idCounter = 0;
-    
 
     public static void main(String[] args) {
 
         // Tenta ler o valor do idCounter do arquivo idCounter.txt
         try {
             // Cria um objeto File com o nome do arquivo
-            File file = new File("./arquivos/idCounter.txt");
+            File file = new File("./data/idCounter.txt");
 
             // Se o arquivo existir, o valor é lido e armazenado na variável idCounter
             if (file.exists()) {
@@ -71,7 +72,7 @@ public class Main {
                 case 4:
                      // Atualizar o arquivo com o último valor de idCounter
                      try {
-                        FileWriter fw = new FileWriter("./arquivos/idCounter.txt");
+                        FileWriter fw = new FileWriter("./data/idCounter.txt");
                         fw.write(Integer.toString(idCounter));
                         fw.close();
                     } catch (Exception e) {
@@ -103,7 +104,7 @@ public class Main {
 
         //cadastrar no arquivo .csv
         try {
-            File cadastros = new File("./arquivos/Cadastros.csv");
+            File cadastros = new File("./data/Cadastros.csv");
             FileWriter fwc = new FileWriter(cadastros, true);
             
             fwc.write(pessoa.toString());
@@ -125,7 +126,7 @@ public class Main {
 
         // Lê todos os cadastros do arquivo CSV e adiciona a lista de pessoas cadastradas
         try {
-            File cadastros = new File("./arquivos/Cadastros.csv");
+            File cadastros = new File("./data/Cadastros.csv");
             BufferedReader brc = new BufferedReader(new FileReader(cadastros));
             
             String linha;
@@ -150,7 +151,7 @@ public class Main {
 
             // Sobrescreve o arquivo CSV com a lista atualizada de cadastros
             try {
-                File cadastros = new File("./arquivos/Cadastros.csv");
+                File cadastros = new File("./data/Cadastros.csv");
                 FileWriter fwc = new FileWriter(cadastros);
                 
                 for(Pessoa pessoa : pessoas.values()) {
