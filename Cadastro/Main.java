@@ -1,5 +1,3 @@
-
-
 /*
 * Created by: Vítor Silva Pastor Gonzalez
 * 2023
