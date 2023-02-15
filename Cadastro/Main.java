@@ -1,5 +1,3 @@
-
-
 /*
 * Created by: Vítor Silva Pastor Gonzalez
 * 2023
@@ -178,9 +176,3 @@ public class Main {
         } 
     }
 }
-
-/*
- * to do:
- * criar o método alterarCadastro()
- * verificar UTF-8
- */
